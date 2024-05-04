@@ -5,6 +5,8 @@ Este é um simples projeto de paginação desenvolvido utilizando HTML, CSS e Ja
 ![image](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/854c3064-d941-4fd0-bf74-cec97e8236d2) ![Publicação_do_LinkedIn_1200x1200__px -removebg-preview](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/4cbb7f9e-f270-4a61-8082-f1b68ac9ed0f)
 
 
+https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/05752d8c-0ecd-4cfe-8af9-586c8e6550e4
+
 
 
 
