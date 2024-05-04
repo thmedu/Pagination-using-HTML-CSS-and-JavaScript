@@ -64,6 +64,10 @@ header {
     font-size: 14px;
     margin-bottom: 15px;
 }
+.card img.expanded {
+    transform: scale(2.1); /* Aumenta o tamanho da imagem em 10% */
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
 
 .btn-more {
     background-color: #050505;
@@ -106,6 +110,10 @@ header {
 
 .page-numbers a {
     margin: 0 5px;
+}
+.pagination a.active {
+    background-color: #edf704; /* Cor de fundo para a página ativa */
+    color: #050505; /* Cor do texto para a página ativa */
 }
 
 .modal {

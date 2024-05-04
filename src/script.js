@@ -1,4 +1,3 @@
-//script.js
 const cardsPerPage = 3;
 const dataContainer = document.querySelector('.card-container');
 const pagination = document.getElementById('pagination');
@@ -22,10 +21,14 @@ function updatePagination() {
     pageNumbers.textContent = `Page ${currentPage} of ${totalPages}`;
     prevButton.disabled = currentPage === 1;
     nextButton.disabled = currentPage === totalPages;
+
+    // Remove a classe 'active' de todos os elementos da página
     pageLinks.forEach((link) => {
-        const page = parseInt(link.dataset.page);
-        link.classList.toggle('active', page === currentPage);
+        link.classList.remove('active');
     });
+    
+    // Adiciona a classe 'active' ao link da página atual
+    pageLinks[currentPage - 1].classList.add('active');
 }
 
 prevButton.addEventListener('click', () => {
@@ -36,11 +39,15 @@ nextButton.addEventListener('click', () => {
     currentPage < totalPages && displayPage(++currentPage) && updatePagination();
 });
 
-pageLinks.forEach((link) => {
+pageLinks.forEach((link, index) => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const page = parseInt(link.dataset.page);
-        page !== currentPage && displayPage(page) && updatePagination();
+        const page = index + 1;
+        if (page !== currentPage) {
+            displayPage(page);
+            currentPage = page;
+            updatePagination();
+        }
     });
 });
 
@@ -55,26 +62,12 @@ function expandImage(card) {
 cards.forEach((card) => {
     card.addEventListener('click', () => {
         expandImage(card);
-    });
 
-    // Adiciona um evento de clique para cada botão "Ver Mais"
-    card.querySelector('.btn-more').addEventListener('click', () => {
-        const shortDescription = card.querySelector('.short-description');
-        const fullDescription = card.querySelector('.full-description');
-        
-        // Alternar a visibilidade dos parágrafos
-        shortDescription.classList.add('hidden');
-        fullDescription.classList.remove('hidden');
-    });
-});
-
-displayPage(currentPage);
-updatePagination();
-//script.js
-
-cards.forEach((card) => {
-    card.addEventListener('click', () => {
-        expandImage(card);
+        // Adiciona temporizador para fechar a imagem após 10 segundos
+        setTimeout(() => {
+            const img = card.querySelector('img');
+            img.classList.remove('expanded');
+        }, 10000); // Fechar após 10 segundos
     });
 
     // Adiciona um evento de clique para cada botão "Ver Mais"
@@ -85,3 +78,19 @@ cards.forEach((card) => {
         fullDescription.classList.toggle('visible');
     });
 });
+
+// Adicionar a lógica fornecida para destacar a página atual na paginação
+function updatePagination() {
+    // Remove a classe 'active' de todos os links de página
+    pageLinks.forEach((link) => {
+        link.classList.remove('active');
+    });
+    
+    // Adiciona a classe 'active' ao link da página atual
+    const currentPageLink = document.querySelector(`.page-link[data-page="${currentPage}"]`);
+    currentPageLink.classList.add('active');
+}
+
+// Inicialize a paginação e a lógica de destaque da página atual
+updatePagination();
+displayPage(currentPage);
