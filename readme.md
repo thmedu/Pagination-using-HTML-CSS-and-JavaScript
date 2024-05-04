@@ -2,6 +2,9 @@
 
 Este é um simples projeto de paginação desenvolvido utilizando HTML, CSS e JavaScript. Ele demonstra como criar uma interface de usuário para exibir uma lista de itens divididos em várias páginas, permitindo ao usuário navegar entre elas.
 
+![Uploading image.png…]()
+
+
 ### Funcionalidades
 
 - **Exibição de cartões:** Os cartões exibem informações sobre sintaxe JavaScript, incluindo tópicos como literais, variáveis, operadores, expressões, palavras-chave, comentários, tipos de dados, funções e identificadores.
