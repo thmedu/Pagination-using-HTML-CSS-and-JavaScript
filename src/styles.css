@@ -1,0 +1,136 @@
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000000f3, #000000fb);
+}
+
+header {
+    background-color: #4646462b;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.hidden {
+    display: none;
+}
+
+.data-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card {
+    flex: 0 0 calc(33.33% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    max-width: 100%;
+    height: auto;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card h3 {
+    margin: 10px 0;
+    font-size: 18px;
+    text-transform: capitalize;
+}
+
+.card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.btn-more {
+    background-color: #050505;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-more:hover {
+    background-color: #edf704;
+    color: #050505;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.pagination a {
+    color: #edf704;
+    padding: 8px 16px;
+    text-decoration: none;
+    border: 1px solid #ffffff;
+    margin: 0 5px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #edf704;
+    color: rgb(0, 0, 0);
+}
+
+.page-numbers {
+    display: inline-block;
+}
+
+.page-numbers a {
+    margin: 0 5px;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+}
+/* Adicione esta classe para mostrar a descrição completa */
+.full-description.visible {
+    display: block;
+}
+
+.full-description.show {
+    display: block;
+}
