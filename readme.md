@@ -5,7 +5,11 @@ Este é um simples projeto de paginação desenvolvido utilizando HTML, CSS e Ja
 ![image](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/854c3064-d941-4fd0-bf74-cec97e8236d2)
 
 
+![Publicação_do_LinkedIn_1200x1200__px -removebg-preview](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/4cbb7f9e-f270-4a61-8082-f1b68ac9ed0f)
+
+
 ### Funcionalidades
+
 
 - **Exibição de cartões:** Os cartões exibem informações sobre sintaxe JavaScript, incluindo tópicos como literais, variáveis, operadores, expressões, palavras-chave, comentários, tipos de dados, funções e identificadores.
   
