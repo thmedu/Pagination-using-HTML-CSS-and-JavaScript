@@ -2,7 +2,7 @@
 
 Este é um simples projeto de paginação desenvolvido utilizando HTML, CSS e JavaScript. Ele demonstra como criar uma interface de usuário para exibir uma lista de itens divididos em várias páginas, permitindo ao usuário navegar entre elas.
 
-![Uploading image.png…]()
+![image](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/854c3064-d941-4fd0-bf74-cec97e8236d2)
 
 
 ### Funcionalidades
