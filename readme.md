@@ -1,5 +1,4 @@
-## Paginação usando HTML, CSS e JavaScript![Publicação_do_LinkedIn_1200x1200__px -removebg-preview](https://github.com/thmedu/Pagination-using-HTML-CSS-and-JavaScript/assets/141462806/4cbb7f9e-f270-4a61-8082-f1b68ac9ed0f) 
-
+## Paginação usando HTML, CSS e JavaScript
 
 Este é um simples projeto de paginação desenvolvido utilizando HTML, CSS e JavaScript. Ele demonstra como criar uma interface de usuário para exibir uma lista de itens divididos em várias páginas, permitindo ao usuário navegar entre elas.
 
