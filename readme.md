@@ -31,6 +31,8 @@ Este projeto consiste em uma implementação simples de paginação desenvolvida
 
 5. **Expandir Imagens:** Clique em uma imagem dentro de um cartão para visualizá-la em tamanho maior, facilitando a visualização de detalhes.
 
----
+## Autor ✍️
 
-Este README.md detalha as funcionalidades do projeto de paginação, explica como utilizar o projeto e fornece instruções claras para configurar e explorar a aplicação. Certifique-se de personalizar os URLs e substituir `seu-usuario` pelo seu nome de usuário do GitHub.
+Este projeto foi desenvolvido por [Thomas Nascimento].
+
+
