@@ -13,6 +13,7 @@ header {
     font-size: 24px;
     font-weight: bold;
     text-transform: uppercase;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
@@ -33,55 +34,61 @@ header {
 }
 
 .card {
-    flex: 0 0 calc(33.33% - 20px);
+    flex: 1 1 calc(33.33% - 20px);
     border: 1px solid #ddd;
     border-radius: 10px;
-    box-shadow: 0 2px 20px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     background-color: #fff;
     text-align: center;
     cursor: pointer;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
 }
 
 .card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.3);
 }
 
 .card img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card img.expanded {
+    transform: scale(1.1); /* Aumenta o tamanho da imagem em 10% */
 }
 
 .card h3 {
     margin: 10px 0;
     font-size: 18px;
     text-transform: capitalize;
+    color: #333;
 }
 
 .card p {
     font-size: 14px;
-    margin-bottom: 15px;
-}
-.card img.expanded {
-    transform: scale(2.1); /* Aumenta o tamanho da imagem em 10% */
-    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+    color: #666;
+    margin: 0 10px 15px;
 }
 
 .btn-more {
     background-color: #050505;
     color: white;
     border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
+    padding: 10px 20px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    transition: background-color 0.3s, color 0.3s, transform 0.3s;
 }
 
 .btn-more:hover {
     background-color: #edf704;
     color: #050505;
+    transform: scale(1.05);
 }
 
 .pagination {
@@ -91,17 +98,17 @@ header {
 
 .pagination a {
     color: #edf704;
-    padding: 8px 16px;
+    padding: 10px 20px;
     text-decoration: none;
     border: 1px solid #ffffff;
     margin: 0 5px;
-    border-radius: 4px;
+    border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .pagination a:hover {
     background-color: #edf704;
-    color: rgb(0, 0, 0);
+    color: #050505;
 }
 
 .page-numbers {
@@ -111,6 +118,7 @@ header {
 .page-numbers a {
     margin: 0 5px;
 }
+
 .pagination a.active {
     background-color: #edf704; /* Cor de fundo para a página ativa */
     color: #050505; /* Cor do texto para a página ativa */
@@ -123,22 +131,62 @@ header {
     transform: translate(-50%, -50%);
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    opacity: 1;
+    display: flex;
 }
 
 .modal img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
-/* Adicione esta classe para mostrar a descrição completa */
-.full-description.visible {
-    display: block;
+
+.full-description {
+    max-width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
 }
 
 .full-description.show {
-    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .card {
+        flex: 1 1 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        flex: 1 1 100%;
+    }
+
+    .btn-more {
+        padding: 10px 15px;
+    }
+
+    .pagination a {
+        padding: 8px 12px;
+    }
 }
