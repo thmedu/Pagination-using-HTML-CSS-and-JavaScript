@@ -1,96 +1,75 @@
-const cardsPerPage = 3;
-const dataContainer = document.querySelector('.card-container');
-const pagination = document.getElementById('pagination');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-const pageNumbers = document.getElementById('page-numbers');
-const pageLinks = document.querySelectorAll('.page-link');
-const cards = Array.from(dataContainer.querySelectorAll('.card'));
-const totalPages = Math.ceil(cards.length / cardsPerPage);
-let currentPage = 1;
+document.addEventListener("DOMContentLoaded", () => {
+    // Selecionar todos os botões "Ver Mais"
+    const btnMoreButtons = document.querySelectorAll('.btn-more');
+    // Selecionar todas as descrições completas
+    const fullDescriptions = document.querySelectorAll('.full-description');
+    // Selecionar todos os elementos "card"
+    const cards = document.querySelectorAll('.card');
+    // Selecionar elementos de paginação
+    const pageLinks = document.querySelectorAll('.page-link');
+    const prevButton = document.getElementById('prev');
+    const nextButton = document.getElementById('next');
+    const itemsPerPage = 3;
+    let currentPage = 1;
 
-function displayPage(page) {
-    const startIndex = (page - 1) * cardsPerPage;
-    const endIndex = page * cardsPerPage;
-    cards.forEach((card, index) => {
-        card.style.display = (index >= startIndex && index < endIndex) ? 'block' : 'none';
+    // Função para mostrar/esconder descrição completa
+    btnMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const card = button.parentElement;
+            const fullDescription = card.querySelector('.full-description');
+            const isVisible = !fullDescription.classList.contains('hidden');
+            fullDescription.classList.toggle('hidden', isVisible);
+            button.textContent = isVisible ? 'Ver Mais' : 'Ver Menos';
+        });
     });
-}
 
-function updatePagination() {
-    pageNumbers.textContent = `Page ${currentPage} of ${totalPages}`;
-    prevButton.disabled = currentPage === 1;
-    nextButton.disabled = currentPage === totalPages;
+    // Função para exibir a página selecionada
+    const showPage = (page) => {
+        cards.forEach((card, index) => {
+            const start = (page - 1) * itemsPerPage;
+            const end = page * itemsPerPage;
+            card.style.display = (index >= start && index < end) ? 'block' : 'none';
+        });
+        updatePagination();
+    };
 
-    // Remove a classe 'active' de todos os elementos da página
-    pageLinks.forEach((link) => {
-        link.classList.remove('active');
+    // Função para atualizar a navegação de paginação
+    const updatePagination = () => {
+        pageLinks.forEach(link => {
+            link.classList.remove('active');
+            if (parseInt(link.dataset.page) === currentPage) {
+                link.classList.add('active');
+            }
+        });
+        prevButton.style.display = currentPage === 1 ? 'none' : 'inline';
+        nextButton.style.display = currentPage === pageLinks.length ? 'none' : 'inline';
+    };
+
+    // Eventos de navegação
+    pageLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentPage = parseInt(link.dataset.page);
+            showPage(currentPage);
+        });
     });
-    
-    // Adiciona a classe 'active' ao link da página atual
-    pageLinks[currentPage - 1].classList.add('active');
-}
 
-prevButton.addEventListener('click', () => {
-    currentPage > 1 && displayPage(--currentPage) && updatePagination();
-});
-
-nextButton.addEventListener('click', () => {
-    currentPage < totalPages && displayPage(++currentPage) && updatePagination();
-});
-
-pageLinks.forEach((link, index) => {
-    link.addEventListener('click', (e) => {
+    prevButton.addEventListener('click', (e) => {
         e.preventDefault();
-        const page = index + 1;
-        if (page !== currentPage) {
-            displayPage(page);
-            currentPage = page;
-            updatePagination();
+        if (currentPage > 1) {
+            currentPage--;
+            showPage(currentPage);
         }
     });
+
+    nextButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage < pageLinks.length) {
+            currentPage++;
+            showPage(currentPage);
+        }
+    });
+
+    // Mostrar a primeira página ao carregar
+    showPage(currentPage);
 });
-
-function expandImage(card) {
-    const img = card.querySelector('img');
-    img.classList.add('expanded');
-    setTimeout(() => {
-        img.classList.remove('expanded');
-    }, 2000); // Fechar após 2 segundos
-}
-
-cards.forEach((card) => {
-    card.addEventListener('click', () => {
-        expandImage(card);
-
-        // Adiciona temporizador para fechar a imagem após 10 segundos
-        setTimeout(() => {
-            const img = card.querySelector('img');
-            img.classList.remove('expanded');
-        }, 10000); // Fechar após 10 segundos
-    });
-
-    // Adiciona um evento de clique para cada botão "Ver Mais"
-    card.querySelector('.btn-more').addEventListener('click', () => {
-        const fullDescription = card.querySelector('.full-description');
-        
-        // Alternar a visibilidade da descrição completa
-        fullDescription.classList.toggle('visible');
-    });
-});
-
-// Adicionar a lógica fornecida para destacar a página atual na paginação
-function updatePagination() {
-    // Remove a classe 'active' de todos os links de página
-    pageLinks.forEach((link) => {
-        link.classList.remove('active');
-    });
-    
-    // Adiciona a classe 'active' ao link da página atual
-    const currentPageLink = document.querySelector(`.page-link[data-page="${currentPage}"]`);
-    currentPageLink.classList.add('active');
-}
-
-// Inicialize a paginação e a lógica de destaque da página atual
-updatePagination();
-displayPage(currentPage);
